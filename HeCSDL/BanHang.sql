@@ -1,0 +1,179 @@
+-- -- Create tables with non-nullable primary key columns
+-- CREATE TABLE KhachHang(
+--     maKH char(5) NOT NULL,
+--     Hoten char(50),
+--     DiaChi char(60),
+--     soDT char(20),
+--     NgSinh date,
+--     NgDK date,
+--     doanhSo numeric,
+--     CONSTRAINT pk_KhachHang PRIMARY KEY (maKH)
+-- );
+
+-- CREATE TABLE NhanVien(
+--     maNV char(5) NOT NULL,
+--     Hoten char(50),
+--     soDT char(20),
+--     NgVL date,	
+--     CONSTRAINT pk_NhanVien PRIMARY KEY (maNV)
+-- );
+
+-- CREATE TABLE SanPham(
+--     maSP char(5) NOT NULL,
+--     tenSP char(50),
+--     DVT char(20),
+--     NuocSX char(40),
+--     Gia numeric,
+--     CONSTRAINT pk_SanPham PRIMARY KEY (maSP)
+-- );
+
+-- CREATE TABLE HoaDon(
+--     soHD int NOT NULL,
+--     NgHD date,
+--     maKH char(5),
+--     maNV char(5),
+--     GiaTri numeric,
+--     CONSTRAINT pk_HoaDon PRIMARY KEY (soHD),
+--     CONSTRAINT fk01_HoaDon FOREIGN KEY (maKH) REFERENCES KhachHang(maKH),
+--     CONSTRAINT fk02_HoaDon FOREIGN KEY (maNV) REFERENCES NhanVien(maNV)
+-- );
+
+-- CREATE TABLE ChiTietHD(
+--     soHD int NOT NULL,
+--     maSP char(5) NOT NULL,
+--     SoLuong int,
+--     CONSTRAINT fk01_ChiTietHD FOREIGN KEY (soHD) REFERENCES HoaDon(soHD),
+--     CONSTRAINT fk02_ChiTietHD FOREIGN KEY (maSP) REFERENCES SanPham(maSP)
+-- );
+
+-- set dateformat dmy
+
+-- -- KhachHang
+-- INSERT into khachhang values('KH01','Nguyen Van A','731 Tran Hung Dao, HAI BÀ TRƯNG, TP Hà Nội','8823451','22/10/1960','22/07/2016',13060000)
+-- INSERT into khachhang values('KH02','Tran Ngoc Han','23/5 Nguyen Trai, HAI BÀ TRƯNG, TP Hà Nội','908256478','03/04/1974','30/07/2016',280000)
+-- INSERT into khachhang values('KH03','Tran Ngoc Linh','45 Nguyen Canh Chan, HOÀN KIẾM, TP Hà Nội','938776266','12/06/1980','08/05/2016',3860000)
+-- INSERT into khachhang values('KH04','Tran Minh Long','50/34 Le Dai Hanh, HOÀN KIẾM0, TP Hà Nội','917325476','09/03/1965','10/02/2016',250000)
+-- INSERT into khachhang values('KH05','Le Nhat Minh','34 Truong Dinh, THANH XUÂN, TP Hà Nội','8246108','10/03/1950','28/10/2016',21000)
+-- INSERT into khachhang values('KH06','Le Hoai Thuong','227 Nguyen Van Cu, HAI BÀ TRƯNG, TP Hà Nội','8631738','31/12/1981','24/11/2016',915000)
+-- INSERT into khachhang values('KH07','Nguyen Van Tam','32/3 Tran Binh Trong, HAI BÀ TRƯNG, TP Hà Nội','916783565','06/04/1971','12/01/2016',12500)
+-- INSERT into khachhang values('KH08','Phan Thi Thanh','45/2 An Duong Vuong, HAI BÀ TRƯNG, TP Hà Nội','938435756','10/01/1971','13/12/2016',365000)
+-- INSERT into khachhang values('KH09','Le Ha Vinh','873 Le Hong Phong, HAI BÀ TRƯNG, TP Hà Nội','8654763','03/09/1979','14/01/2017',70000)
+-- INSERT into khachhang values('KH10','Ha Duy Lap','34/34B Nguyen Trai, HOÀN KIẾM, TP Hà Nội','8768904','02/05/1983','16/01/2017',67500)
+-- -- NHANVIEN
+-- INSERT into nhanvien values('NV01','Nguyen Nhu Nhut','927345678','13/04/2016')
+-- INSERT into nhanvien values('NV02','Le Thi Phi Yen','987567390','21/04/2016')
+-- INSERT into nhanvien values('NV03','Nguyen Van B','997047382','27/04/2016')
+-- INSERT into nhanvien values('NV04','Ngo Thanh Tuan','913758498','24/06/2016')
+-- INSERT into nhanvien values('NV05','Nguyen Thi Truc Thanh','918590387','20/07/2016')
+
+-- -- SanPham
+-- INSERT into sanpham values('BC01','But chi','cay','Singapore',3000)
+-- INSERT into sanpham values('BC02','But chi','cay','Singapore',5000)
+-- INSERT into sanpham values('BC03','But chi','cay','Viet Nam',3500)
+-- INSERT into sanpham values('BC04','But chi','hop','Viet Nam',30000)
+-- INSERT into sanpham values('BB01','But bi','cay','Viet Nam',5000)
+-- INSERT into sanpham values('BB02','But bi','cay','Trung Quoc',7000)
+-- INSERT into sanpham values('BB03','But bi','hop','Thai Lan',100000)
+-- INSERT into sanpham values('TV01','Tap 100 giay mong','quyen','Trung Quoc',2500)
+-- INSERT into sanpham values('TV02','Tap 200 giay mong','quyen','Trung Quoc',4500)
+-- INSERT into sanpham values('TV03','Tap 100 giay tot','quyen','Viet Nam',3000)
+-- INSERT into sanpham values('TV04','Tap 200 giay tot','quyen','Viet Nam',5500)
+-- INSERT into sanpham values('TV05','Tap 100 trang','chuc','Viet Nam',23000)
+-- INSERT into sanpham values('TV06','Tap 200 trang','chuc','Viet Nam',53000)
+-- INSERT into sanpham values('TV07','Tap 100 trang','chuc','Trung Quoc',34000)
+-- INSERT into sanpham values('ST01','So tay 500 trang','quyen','Trung Quoc',40000)
+-- INSERT into sanpham values('ST02','So tay loại 1','quyen','Viet Nam',55000)
+-- INSERT into sanpham values('ST03','So tay loại 2','quyen','Viet Nam', 1000)
+-- INSERT into sanpham values('ST04','So tay','quyen','Thai Lan',55000)
+-- INSERT into sanpham values('ST05','So tay mong','quyen','Thai Lan',20000)
+-- INSERT into sanpham values('ST06','Phan viet bang','hop','Viet Nam',5000)
+-- INSERT into sanpham values('ST07','Phan khong bui','hop','Viet Nam',7000)
+-- INSERT into sanpham values('ST08','Bong bang','cai','Viet Nam',1000)
+-- INSERT into sanpham values('ST09','But long','cay','Viet Nam',5000)
+-- INSERT into sanpham values('ST10','But long','cay','Trung Quoc',7000)
+
+-- -- HoaDon
+-- INSERT into hoadon values(1001,'23/07/2017','KH01','NV01',320000)
+-- INSERT into hoadon values(1002,'12/08/2017','KH01','NV02',840000)
+-- INSERT into hoadon values(1003,'23/08/2017','KH02','NV01',100000)
+-- INSERT into hoadon values(1004,'01/09/2017','KH02','NV01',180000)
+-- INSERT into hoadon values(1005,'20/10/2017','KH01','NV02',3800000)
+-- INSERT into hoadon values(1006,'16/10/2017','KH01','NV03',2430000)
+-- INSERT into hoadon values(1007,'28/10/2017','KH03','NV03',510000)
+-- INSERT into hoadon values(1008,'28/10/2017','KH01','NV03',440000)
+-- INSERT into hoadon values(1009,'28/10/2017','KH03','NV04',200000)
+-- INSERT into hoadon values(1010,'01/11/2017','KH01','NV01',5200000)
+-- INSERT into hoadon values(1011,'04/11/2017','KH04','NV03',250000)
+-- INSERT into hoadon values(1012,'30/11/2017','KH05','NV03',21000)
+-- INSERT into hoadon values(1013,'12/12/2017','KH06','NV01',5000)
+-- INSERT into hoadon values(1014,'31/12/2017','KH03','NV02',3150000)
+-- INSERT into hoadon values(1015,'01/01/2018','KH06','NV01',910000)
+-- INSERT into hoadon values(1016,'01/01/2018','KH07','NV02',12500)
+-- INSERT into hoadon values(1017,'02/01/2018','KH08','NV03',35000)
+-- INSERT into hoadon values(1018,'13/01/2018','KH08','NV03',330000)
+-- INSERT into hoadon values(1019,'13/01/2018','KH01','NV03',30000)
+-- INSERT into hoadon values(1020,'14/01/2018','KH09','NV04',70000)
+-- INSERT into hoadon values(1021,'16/01/2018','KH10','NV03',67500)
+-- INSERT into hoadon values(1022,'16/01/2018',Null,'NV03',7000)
+-- INSERT into hoadon values(1023,'17/01/2018',Null,'NV01',330000)
+
+-- -- CTHD
+-- INSERT into ChiTietHD values(1001,'TV02',10)
+-- INSERT into ChiTietHD values(1001,'ST01',5)
+-- INSERT into ChiTietHD values(1001,'BC01',5)
+-- INSERT into ChiTietHD values(1001,'BC02',10)
+-- INSERT into ChiTietHD values(1001,'ST08',10)
+-- INSERT into ChiTietHD values(1002,'BC04',20)
+-- INSERT into ChiTietHD values(1002,'BB01',20)
+-- INSERT into ChiTietHD values(1002,'BB02',20)
+-- INSERT into ChiTietHD values(1003,'BB03',10)
+-- INSERT into ChiTietHD values(1004,'TV01',20)
+-- INSERT into ChiTietHD values(1004,'TV02',10)
+-- INSERT into ChiTietHD values(1004,'TV03',10)
+-- INSERT into ChiTietHD values(1004,'TV04',10)
+-- INSERT into ChiTietHD values(1005,'TV05',50)
+-- INSERT into ChiTietHD values(1005,'TV06',50)
+-- INSERT into ChiTietHD values(1006,'TV07',20)
+-- INSERT into ChiTietHD values(1006,'ST01',30)
+-- INSERT into ChiTietHD values(1006,'ST02',10)
+-- INSERT into ChiTietHD values(1007,'ST03',10)
+-- INSERT into ChiTietHD values(1008,'ST04',8)
+-- INSERT into ChiTietHD values(1009,'ST05',10)
+-- INSERT into ChiTietHD values(1010,'TV07',50)
+-- INSERT into ChiTietHD values(1010,'ST07',50)
+-- INSERT into ChiTietHD values(1010,'ST08',100)
+-- INSERT into ChiTietHD values(1010,'ST04',50)
+-- INSERT into ChiTietHD values(1010,'TV03',100)
+-- INSERT into ChiTietHD values(1011,'ST06',50)
+-- INSERT into ChiTietHD values(1012,'ST07',3)
+-- INSERT into ChiTietHD values(1013,'ST08',5)
+-- INSERT into ChiTietHD values(1014,'BC02',80)
+-- INSERT into ChiTietHD values(1014,'BB02',100)
+-- INSERT into ChiTietHD values(1014,'BC04',60)
+-- INSERT into ChiTietHD values(1014,'BB01',50)
+-- INSERT into ChiTietHD values(1015,'BB02',30)
+-- INSERT into ChiTietHD values(1015,'BB03',7)
+-- INSERT into ChiTietHD values(1016,'TV01',5)
+-- INSERT into ChiTietHD values(1017,'TV02',1)
+-- INSERT into ChiTietHD values(1017,'TV03',1)
+-- INSERT into ChiTietHD values(1017,'TV04',5)
+-- INSERT into ChiTietHD values(1018,'ST04',6)
+-- INSERT into ChiTietHD values(1019,'ST05',1)
+-- INSERT into ChiTietHD values(1019,'ST06',2)
+-- INSERT into ChiTietHD values(1020,'ST07',10)
+-- INSERT into ChiTietHD values(1021,'ST08',5)
+-- INSERT into ChiTietHD values(1021,'TV01',7)
+-- INSERT into ChiTietHD values(1021,'TV02',10)
+-- INSERT into ChiTietHD values(1022,'ST07',1)
+-- INSERT into ChiTietHD values(1023,'ST04',6)
+
+-- SELECT 
+
+--  In ra danh sách các sản phẩm (MASP,tenSP) không bán được trong năm 2016
+SELECT maSP, tenSP FROM SanPham WHERE maSP NOT IN (SELECT maSP FROM ChiTietHD WHERE SOHD IN (SELECT SOHD FROM HoaDon WHERE YEAR(NGHD) = 2016))
+-- In ra danh sách các sản phẩm (maSP,tenSP) do “Trung Quoc” sản xuất không bán được trong năm 2016.
+SELECT maSP, tenSP FROM SanPham WHERE NuocSX = 'Trung Quoc' AND maSP NOT IN (SELECT maSP FROM ChiTietHD WHERE SOHD IN (SELECT SOHD FROM HoaDon WHERE YEAR(NGHD) = 2016))
+--  Tìm số hóa đơn đã mua tất cả các sản phẩm do Singapore sản xuất. 
+SELECT soHD FROM HoaDon WHERE soHD IN (SELECT soHD FROM ChiTietHD WHERE maSP IN (SELECT maSP FROM SanPham WHERE NuocSX = 'Singapore') GROUP BY soHD HAVING COUNT(DISTINCT maSP) = (SELECT COUNT(DISTINCT maSP) FROM SanPham WHERE NuocSX = 'Singapore'))
+-- Tìm số hóa đơn trong năm 2016 đã mua ít nhất tất cả các sản phẩm do Singapore sản xuất. 
+SELECT soHD FROM HoaDon WHERE soHD IN (SELECT soHD FROM ChiTietHD WHERE maSP IN (SELECT maSP FROM SanPham WHERE NuocSX = 'Singapore') GROUP BY soHD HAVING COUNT(DISTINCT maSP) = (SELECT COUNT(DISTINCT maSP) FROM SanPham WHERE NuocSX = 'Singapore')) AND soHD IN (SELECT soHD FROM HoaDon WHERE YEAR(NGHD) = 2016)
